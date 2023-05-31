@@ -1,0 +1,71 @@
+﻿@model MVC_testovoe.Models.VM.IzdelLinkViewModel
+
+@{
+    ViewBag.Title = "Добавить изделие";
+}
+
+<h2>Добавить изделие</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Изделие</h4>
+        <hr />
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Название</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NewIzdel.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NewIzdel.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Цена</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NewIzdel.Price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NewIzdel.Price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    </div>
+
+    <div class="form-horizontal">
+        <h4>Связать</h4>
+        <hr />
+
+        <div class="form-group">
+            <label class="control-label col-md-2">IzdelUpId</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.NewLink.IzdelUpId, new SelectList(Model.Izdels, "Id", "Name"), "Оставьте пустым если хотите создать изделие на первом уровне", new { @class = "form-control" })
+                
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Количество</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NewLink.kol, new { htmlAttributes = new { @class = "form-control" } })
+                
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Добавить"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <form action="/Home/Index">
+                    <input type="submit" value="Назад" />
+                </form>
+            </div>
+        </div>
+
+        
+    </div>
+}

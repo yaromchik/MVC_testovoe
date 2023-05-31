@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <form action="/Home/AddIzdelAndLink">
+        <input type="submit" value="Добавить изделие" />
+    </form>
+    <br />
+    <form action="/Home/ExportToExcel" method="post">
+        <input type="submit" value="Сгенерировать отчет" />
+    </form>
+</div>
